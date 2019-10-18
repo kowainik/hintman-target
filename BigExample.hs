@@ -18,7 +18,7 @@ runLog = usingLoggerT mempty
 hlintSpec :: Spec
 hlintSpec = describe "HLint works on opened PRs" $ do
     it "works with non-code PRs" $
-        pr1 >>= runLog . runHLint >>= shouldBe []
+        pr1 >>= runLog . runHLint >>= (shouldBe [])
     it "ignores parse errors" $
         pr3 >>= runLog . runHLint >>= shouldBe []
     it "creates correct eta-reduce comment for PR 2" $
