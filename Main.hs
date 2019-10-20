@@ -28,3 +28,5 @@ redundantDollar = putStrLn $ "<- What is this dollar about?"
 
 fmapWarn :: (String -> String) -> IO String
 fmapWarn f = fmap f $ foo bar
+
+  
