@@ -13,7 +13,7 @@ import Hintman.Hint (getAllComments)
 import Test.Data (pr1, pr2, pr3)
 
 runLog :: LoggerT Message IO a -> IO a
-runLog = usingLoggerT mempty
+runLog = usingLoggerT (mempty)
 
 hlintSpec :: Spec
 hlintSpec = describe "HLint works on opened PRs" $ do
@@ -112,3 +112,4 @@ hlintSpec = describe "HLint works on opened PRs" $ do
         , "fmapWarn f = f Control.Applicative.<$> foo bar"
         , "```"
         ]
+   
