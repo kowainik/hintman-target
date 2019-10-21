@@ -2,6 +2,7 @@ module Test.HLint
        ( hlintSpec
        ) where
 
+
 import Colog (LoggerT, usingLoggerT)
 import Test.Hspec (Spec, describe, it, shouldBe, shouldSatisfy)
 
@@ -22,7 +23,7 @@ hlintSpec = describe "HLint works on opened PRs" $ do
     it "ignores parse errors" $
         pr3 >>= runLog . runHLint >>= shouldBe []
     it "creates correct eta-reduce comment for PR 2" $
-        pr2 >>= runLog . runHLint >>= (`shouldSatisfy` (etaComment `elem`))
+        pr2 >>= (runLog) . runHLint >>= (`shouldSatisfy` (etaComment `elem`))
     it "creates correct part line comment for PR 2" $
         pr2 >>= runLog . runHLint >>= (`shouldSatisfy` (avoidLambdaComment `elem`))
     it "creates remove line comment for PR 2" $
@@ -74,7 +75,7 @@ hlintSpec = describe "HLint works on opened PRs" $ do
         ]
 
     multilineComment :: Comment
-    multilineComment = mkComment 18 $ unlines
+    multilineComment = mkComment (18) $ unlines
         [ "Warning: Eta reduce"
         , "```"
         , "multiline = putStrLn"
