@@ -12,7 +12,7 @@ import Hintman.Hint (getAllComments)
 
 import Test.Data (pr1, pr2, pr3)
 
-runLog :: LoggerT Message IO a -> IO a
+runLog :: LoggerT Message IO a -> IO a   
 runLog = usingLoggerT mempty
 
 hlintSpec :: Spec
